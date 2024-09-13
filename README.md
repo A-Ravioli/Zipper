@@ -1,112 +1,132 @@
-## Zipper - A Python Tool for Zipping Folders For CS Homework
+# Zipper - A Python GUI Tool for Zipping Folders
 
-### **Overview:**
-A user-friendly Python application with a graphical interface that simplifies the process of zipping a folder and updating the zip file when changes are made.
+## Overview
 
-### **Features:**
+**Zipper** is a user-friendly Python application with a graphical interface that simplifies the process of zipping folders. It allows you to select a folder, set a destination for the zip file, and provides options to manually zip or rezip the folder. Additionally, it features an **Autozip** functionality that monitors the selected folder for changes and automatically updates the zip file when modifications are detected.
 
-1. **Folder Selection:**
-   - A button to browse and select the folder you want to zip.
-   - Display the path of the selected folder in the GUI.
+## Features
 
-2. **Zip File Creation:**
-   - Automatically zip the selected folder when prompted.
-   - Save the zip file to a default location or allow the user to choose the destination.
+- **Select Folder to Zip**: Easily browse and select the folder you want to compress.
+- **Set Destination Folder**: Choose where the zip file will be saved.
+- **Zip and Rezip**: Create a new zip file or update an existing one with the latest folder contents.
+- **Autozip**: Enable automatic rezipping when changes are detected in the selected folder.
+- **User-Friendly Interface**: A clean and intuitive GUI with customizable aesthetics.
 
-3. **Rezip Functionality:**
-   - A "Rezip" button that replaces the previously created zip file with an updated one reflecting any changes made to the folder's contents.
-   - Ensure that the previous zip file is overwritten without creating duplicates.
+## Table of Contents
 
-4. **Status Notifications:**
-   - Display messages or prompts indicating the success or failure of zip and rezip operations.
-   - Inform the user when the process is complete.
+- [Installation](#installation)
+  - [Prerequisites](#prerequisites)
+  - [Setup](#setup)
+- [Usage](#usage)
+  - [Running the Application](#running-the-application)
+  - [Selecting a Folder](#selecting-a-folder)
+  - [Setting the Destination Folder](#setting-the-destination-folder)
+  - [Zipping the Folder](#zipping-the-folder)
+  - [Enabling Autozip](#enabling-autozip)
+  - [Exiting the Application](#exiting-the-application)
+- [Customization](#customization)
+  - [GUI Appearance](#gui-appearance)
+  - [Autozip Configuration](#autozip-configuration)
+- [Troubleshooting](#troubleshooting)
+- [Dependencies](#dependencies)
+- [License](#license)
 
-5. **User Interface:**
-   - Clean and intuitive layout.
-   - Include necessary buttons: "Select Folder," "Zip," and "Rezip."
-   - Optional menu bar for additional settings or help.
+## Installation
 
-### **Dependencies:**
+### Prerequisites
 
-- **Programming Language:** Python 3.x
-- **GUI Framework:** Tkinter (built-in), PyQt5, or wxPython
-- **Modules and Libraries:**
-  - `os` and `shutil` for file and directory operations.
-  - `zipfile` module for creating and managing zip files.
-  - `tkinter.filedialog` for folder selection dialogs.
+- **Python 3.6 or higher**: Ensure that Python is installed on your system.
+- **pip**: Python package installer should be available.
 
-### **Steps to Develop the Application:**
+### Setup
 
-1. **Set Up the Development Environment:**
-   - Install necessary libraries (if not using Tkinter).
-   - Ensure Python is updated to the latest version.
+1. **Clone or Download the Repository**:
 
-2. **Design the GUI Layout:**
-   - Create the main window.
-   - Add labels, buttons, and text fields as required.
-   - Arrange the components for optimal user experience.
+   ```bash
+   git clone https://github.com/yourusername/zipper.git
+   cd zipper
+   ```
 
-3. **Implement Folder Selection:**
-   - Code the functionality for the "Select Folder" button.
-   - Use `filedialog.askdirectory()` to allow folder selection.
-   - Display the selected folder path in the GUI.
+2. **Install Required Python Modules**:
 
-4. **Develop the Zip Functionality:**
-   - Write a function to zip the selected folder using the `zipfile` module.
-   - Allow the user to specify the save location or use a default path.
-   - Handle exceptions and errors during the zipping process.
+   The application uses the `watchdog` module to monitor file system events for the Autozip feature. Install it using pip:
 
-5. **Implement the Rezip Feature:**
-   - Check if a zip file already exists for the selected folder.
-   - Overwrite the existing zip file with the updated contents.
-   - Ensure file locks or permissions do not prevent overwriting.
+   ```bash
+   pip install watchdog
+   ```
 
-6. **Add Status Notifications:**
-   - Use message boxes or a status bar to inform the user of the process.
-   - Display success messages or error alerts as needed.
+## Usage
 
-7. **Test the Application:**
-   - Perform unit tests on each function.
-   - Test the entire workflow to ensure reliability.
-   - Check compatibility across different operating systems if possible.
+### Running the Application
 
-8. **Optimize and Refine:**
-   - Improve the user interface based on usability.
-   - Optimize code for efficiency.
-   - Add comments and documentation within the code.
+Navigate to the directory containing the `zipper.py` script and run:
 
-### **Optional Enhancements:**
+```bash
+python zipper.py
+```
 
-- **Drag and Drop Functionality:**
-  - Allow users to drag a folder into the application window to select it.
+### Selecting a Folder
 
-- **Progress Bar:**
-  - Show a progress indicator during the zipping process for large folders.
+1. Click the **"Select Folder"** button.
+2. Browse and select the folder you wish to zip.
+3. The selected folder path will be displayed on the application window.
 
-- **Settings Menu:**
-  - Options to include or exclude certain file types.
-  - Ability to change the default save location.
+### Setting the Destination Folder
 
-- **Error Logging:**
-  - Create logs for any errors encountered during operations.
+1. Click the **"Set Destination Folder"** button.
+2. Choose the directory where you want the zip file to be saved.
+3. The destination path will be displayed. If not set, the zip file defaults to the same directory as the selected folder.
 
-### **What You'll Need to Do:**
+### Zipping the Folder
 
-- **Familiarize Yourself with the GUI Framework:**
-  - If you're new to Tkinter or the chosen framework, review tutorials and documentation.
+- Click the **"Zip"** button to create a zip file of the selected folder.
+- If a zip file with the same name already exists at the destination, you'll be prompted to overwrite it.
+- A success message will confirm the creation of the zip file.
 
-- **Plan the Application Structure:**
-  - Decide on how you'll organize your code (e.g., using classes or functions).
+### Enabling Autozip
 
-- **Write and Test Code Iteratively:**
-  - Develop the application in small parts, testing each feature as you go.
+- Check the **"Enable Autozip"** checkbox to start monitoring the folder.
+- Any changes (additions, modifications, deletions) in the folder will automatically trigger the rezipping process.
+- Ensure the application remains open for Autozip to function.
 
-- **Gather Feedback:**
-  - If possible, have someone else test the application to catch any issues you might have missed.
+### Exiting the Application
 
-- **Prepare for Deployment:**
-  - If you need to run the application on other machines, consider packaging it with tools like PyInstaller to create an executable.
+- Click the close button (**"X"** on the window title bar).
+- The application will stop monitoring and close gracefully.
+
+## Customization
+
+### GUI Appearance
+
+- **Background and Text Colors**: The application uses a black background with white text and buttons for better contrast.
+- **Fonts and Styles**: Modify the `font`, `bg`, and `fg` parameters in the code to change the appearance.
+
+### Autozip Configuration
+
+- **Monitoring Specific Events**: Adjust the `on_any_event` method in the `FolderMonitorHandler` class to filter specific file system events.
+- **Debouncing**: Implement delays to prevent multiple rapid rezips during continuous file changes.
+
+## Troubleshooting
+
+- **Module Not Found Error**: Ensure the `watchdog` module is installed and you're using the correct Python environment.
+- **Permission Issues**: Verify that you have read permissions for the selected folder and write permissions for the destination folder.
+- **Application Not Responding**: Avoid monitoring very large folders with frequent changes, or optimize the code for better performance.
+
+## Dependencies
+
+- **Python Standard Libraries**:
+  - `os`
+  - `zipfile`
+  - `tkinter`
+  - `threading`
+  - `time`
+- **Third-Party Modules**:
+  - `watchdog` (Install via `pip install watchdog`)
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
-By following this outline, you'll be able to create a tool that streamlines the process of zipping and updating your code files for submission. Let me know if you need further details on any of the steps or assistance with the code itself!
+**Note**: This application is intended for educational purposes. Customize and expand it according to your needs. If you encounter any issues or have suggestions for improvements, feel free to contribute or contact the maintainer.
