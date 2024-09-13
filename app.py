@@ -208,5 +208,3 @@ if __name__ == "__main__":
     app = ZipperApp(root)
     root.protocol("WM_DELETE_WINDOW", app.on_closing)
     root.mainloop()
-
-#test
